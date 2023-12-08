@@ -1,5 +1,5 @@
 {
     "diffEditor.codeLens": true,
     "editor.tabCompletion": "on",
-    "editor.inlineSuggest.showToolbar": "always"
+    "editor.inlineSuggest.showToolbar": "onHover"
 }
