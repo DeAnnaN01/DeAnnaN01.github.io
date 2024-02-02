@@ -1,5 +1,6 @@
 {
     "diffEditor.codeLens": true,
     "editor.tabCompletion": "on",
-    "editor.inlineSuggest.showToolbar": "onHover"
+    "editor.inlineSuggest.showToolbar": "onHover",
+    "liveServer.settings.port": 5501
 }

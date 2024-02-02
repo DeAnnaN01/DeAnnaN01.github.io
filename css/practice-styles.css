@@ -1,0 +1,65 @@
+body {
+    background: #f7eabf;
+   /* font-family: Tahoma, Arial, sans-serif; */
+}
+
+body {
+    font-family: 'Architects Daughter'; /* Google Font */
+    font-size:22px;
+   /* font-family: "Times New Roman", Times, serif; /* Fallback Font */
+   
+}
+
+
+
+h1 {
+    color: rgb(139, 2, 173);
+   /* font: 32px Garamond, Helvetica, serif; */
+   text-align: center;
+
+}
+
+table {
+    display: centered;
+    width: 50%;
+    outline: black solid 
+}
+
+thead {
+    display: auto;
+    text-align: auto;
+    background: rgb(139, 2, 173);
+    color:rgb(255, 255, 250);
+    outline: solid black 5px;
+    length: table;
+    width: inside table outline;
+}
+
+label {
+    display: box;
+    box: float flex;
+    text-align: center;
+
+}
+
+#submit-btn {
+    display: block;
+}
+
+h2 {
+    display: block centered;
+    margin: auto centered;
+    padding: 25px;    
+    color: darkmagenta;
+}
+
+form {
+    display: centered;
+    margin: auto;
+    object-position: centered;
+}
+
+input {
+    display: inline-block centered;
+    margin: auto;
+}
