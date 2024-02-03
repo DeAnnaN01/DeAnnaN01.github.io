@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Matching Game</title>
+    <style>
+        img {
+            position: absolute;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            flex-flow: column;
+        }
+
+        div {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+        }
+
+        #main {
+            display: flex;
+            flex-direction: row;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        #rightSide {
+            left: 500px;
+            border-left: 1px solid;
+        }
+
+        button {
+            margin: 10px;
+            color: purple;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 10px;
+            border: 2px solid purple;
+            border-radius: 10px;
+            background-color: white;
+        }
+        
+        button:hover {
+            background-color: purple;
+            color: white;
+            cursor: pointer;
+        }
+
+        #reload {
+            flex: 1;
+            display: inline-block;
+            justify-content: center;
+            align-items: bottom;            
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <header id="header">
+        <div>
+            <h1>Matching Game</h1>
+        </div>
+        
+        <div>
+            <p>Click on the extra smiling face on the left.</p>
+        </div>
+    </header>
+
+    <main id="main">
+        <div id="leftSide"></div>
+        <div id="rightSide"></div>
+    </main>
+
+    <footer id="footer">
+        <div id="reload">
+            <button onclick="window.location.reload()">Restart</button>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', loadGame);
+
+
+        function loadGame() {
+
+            let numberOfFaces = 5;
+            const theLeftSide = document.getElementById('leftSide');
+            const theRightSide = document.getElementById('rightSide');
+            let level = 0;
+            generateFaces();
+
+            function generateFaces() {
+                for (let i = 0; i < numberOfFaces; i++) {
+                    const face = document.createElement('img');
+                    face.src = 'images/smile.png';
+                    let randomTop = Math.floor(Math.random() * 400) + 1;
+                    let randomLeft = Math.floor(Math.random() * 400) + 1;
+                    //console.log(randomTop);
+                    //console.log(randomLeft);
+
+
+                    face.style.top = randomTop + 'px';
+                    face.style.left = randomLeft + 'px';
+                    theLeftSide.appendChild(face);
+                }
+                const leftSideImages = theLeftSide.cloneNode(true);
+                /* while (theLeftSide.leftSideImages) {*/
+                leftSideImages.removeChild(leftSideImages.lastChild);
+                /* } */
+                theRightSide.appendChild(leftSideImages);
+                theLeftSide.lastChild.addEventListener('click', nextLevel);
+                theLeftSide.addEventListener('click', gameOver);
+
+                // document.body.addEventListener('click', gameOver);
+            }
+            function nextLevel(event) {
+                event.stopPropagation();
+                numberOfFaces += 5;
+                while (theLeftSide.firstChild) {
+                    theLeftSide.removeChild(theLeftSide.firstChild);
+                }
+                while (theRightSide.firstChild) {
+                    theRightSide.removeChild(theRightSide.firstChild);
+                }
+                level += 1;
+                generateFaces();
+            }
+            function gameOver() {
+                alert('Game Over! \n\nYou made it to level ' + level + '!');
+                document.body.removeEventListener('click', gameOver);
+                theLeftSide.lastChild.removeEventListener('click', nextLevel);
+            }
+
+            function reload() {
+                window.addEventListener('load', generateFaces);
+            }
+        }
+    </script>
+</body>
+
+</html>
